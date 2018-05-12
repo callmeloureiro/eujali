@@ -5,6 +5,9 @@ module.exports = {
   entry: {
     app: ["./src/app.js"]
   },
+  output: {
+    filename: './assets/js/app.js'
+  },
   module: {
     rules: [
       {
@@ -24,8 +27,22 @@ module.exports = {
         ]
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"]
+        test: /\.s?[ac]ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[hash:base64:6]',
+              minimize: { safe: true }
+            }
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ],
       }
     ]
   },
@@ -35,8 +52,8 @@ module.exports = {
       filename: "./index.html"
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
+      filename: "./assets/css/[name].css",
+      chunkFilename: "./assets/css/[id].css"
     })
   ]
 };

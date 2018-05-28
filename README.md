@@ -6,5 +6,5 @@
   - Webpack 4
   - SASS
   - CSS Modules
-  - Standart JS
+  - StandartJS
   - .. Coming soon

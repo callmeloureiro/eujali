@@ -1,8 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-import App from './templates/App';
+import './styles/styles.sass'
 
-const element = document.getElementById('app');
+import Home from './pages/Home'
 
-ReactDOM.render(<App />, element);
+const element = document.getElementById('app')
+
+ReactDOM.render(<Home />, element)

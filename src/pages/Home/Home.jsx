@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Page from '../../templates/Page'
+import Page from '../../components/templates/Page'
 
-import Link from '../../organisms/Link'
+import Link from '../../components/organisms/Link'
 
 const Home = () => (
   <Page>

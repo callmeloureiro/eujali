@@ -1,5 +1,7 @@
 import React from 'react'
 
+import style from './ListRead.sass'
+
 class ListRead extends React.Component {
   constructor (props) {
     super(props)
@@ -48,14 +50,14 @@ class ListRead extends React.Component {
 
     return (
       <div>
-        <ul>
+        <ul className={style.listRead}>
           { links.length > 0 &&
             links.map((elm, index) =>
               <li key={index}>
-                <small>
-                  <i className='fa fa-close' onClick={() => this.deleteLink(elm.uuid)}>{''}</i>
-                </small>
-                <a href={elm.link} target='_blank'>{elm.link}</a>
+                <button type='button' onClick={() => this.deleteLink(elm.uuid)}>
+                  <i className='fa fa-close'>{''}</i>
+                </button>
+                <a href={'//' + elm.link} target='_blank'>{elm.link}</a>
               </li>
             )
           }

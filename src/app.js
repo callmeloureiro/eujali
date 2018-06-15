@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import './styles/styles.sass'
+import './components/styles/styles.sass'
 
-import Home from './components/pages/Home'
+import Home from './pages/Home'
 
 const element = document.getElementById('app')
 

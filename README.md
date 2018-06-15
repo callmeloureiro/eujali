@@ -1,10 +1,3 @@
-## A Simples boilerplate React
+## Eu já li
 
-> Simple starter from react. Optimization for writing code not configuration.
-
-- Features
-  - Webpack 4
-  - SASS
-  - CSS Modules
-  - StandartJS
-  - .. Coming soon
+TODO: Adicionar fontAwesome como dependência do webpack

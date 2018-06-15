@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import './styles/styles.sass'
 
-import Home from './pages/Home'
+import Home from './components/pages/Home'
 
 const element = document.getElementById('app')
 

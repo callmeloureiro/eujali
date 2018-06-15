@@ -30,7 +30,7 @@ class ListRead extends React.Component {
     })
   }
 
-  getLinks = (obj) => {
+  getLinksFormated = (obj) => {
     if (typeof obj !== 'object') return []
 
     const max = this.state.max
@@ -44,14 +44,19 @@ class ListRead extends React.Component {
   }
 
   render = () => {
-    const links = this.getLinks(this.state.links)
+    const links = this.getLinksFormated(this.state.links)
 
     return (
       <div>
         <ul>
           { links.length > 0 &&
             links.map((elm, index) =>
-              <li onClick={() => this.deleteLink(elm.uuid)} key={index}>{elm.link}</li>
+              <li key={index}>
+                <small>
+                  <i className='fa fa-close' onClick={() => this.deleteLink(elm.uuid)}></i>
+                </small>
+                <a href={elm.link} target='_blank'>{elm.link}</a>
+              </li>
             )
           }
 

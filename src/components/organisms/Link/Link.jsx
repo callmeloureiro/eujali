@@ -59,7 +59,7 @@ class Link extends React.Component {
 
   render = () => {
     return (
-      <Container className={[style.linkContainer].join(' ')}>
+      <Container className={style.linkContainer}>
         <Row>
           <Column>
             <FormRead addLink={this.setLink} />

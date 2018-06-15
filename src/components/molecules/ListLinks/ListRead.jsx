@@ -63,7 +63,7 @@ class ListRead extends React.Component {
           }
 
           { links.length === 0 &&
-            `Sem nenhum registro`
+            <li>Sem nenhum registro</li>
           }
         </ul>
       </div>

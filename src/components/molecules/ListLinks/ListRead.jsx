@@ -53,7 +53,7 @@ class ListRead extends React.Component {
             links.map((elm, index) =>
               <li key={index}>
                 <small>
-                  <i className='fa fa-close' onClick={() => this.deleteLink(elm.uuid)}></i>
+                  <i className='fa fa-close' onClick={() => this.deleteLink(elm.uuid)} />
                 </small>
                 <a href={elm.link} target='_blank'>{elm.link}</a>
               </li>

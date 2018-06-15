@@ -8,8 +8,8 @@ import Row from '../../atoms/Row'
 
 const Header = () => (
   <header className={style.header}>
-    <Container>
-      <Row>
+    <Container className={style.headerBorder}>
+      <Row center>
         <Column>
           <h1>Eu já li...</h1>
         </Column>

@@ -7,7 +7,7 @@ const Container = ({className, fluid, children}) => {
   if (fluid) {
     classes = [...classes, style.container]
   } else {
-    classes = [...classes, style.container, style.container110]
+    classes = [...classes, style.container, style.container1120]
   }
 
   return (

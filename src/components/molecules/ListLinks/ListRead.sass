@@ -1,1 +1,27 @@
 .listRead
+
+  li
+    display: flex
+    &:not(:last-child)
+      margin-bottom: 1rem
+
+  button
+    background: none
+    border: none
+
+  small
+    font-size: 1.2rem
+
+  .circle
+    border: 1px solid #dcdcdc
+    width: 2rem
+    height: 2rem
+    display: inline-block
+    background: none
+    margin-right: 1rem
+    &:hover
+      background: #dcdcdc
+
+  .listReadContent
+    display: flex
+    flex-flow: column

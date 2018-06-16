@@ -27,7 +27,8 @@ class Link extends React.Component {
     this.setState(prevState => ({
       links: [...prevState.links, {
         link: value,
-        uuid: this.generateGUID()
+        uuid: this.generateGUID(),
+        dateCreated: +new Date()
       }]
     }))
   }
@@ -67,7 +68,11 @@ class Link extends React.Component {
         </Row>
         <Row>
           <Column>
-            <ListRead dataLinks={this.getLinks()} updateLinks={this.updateLinks} max={20} reverse />
+            <ListRead
+              dataLinks={this.getLinks()}
+              updateLinks={this.updateLinks}
+              max={8}
+            />
           </Column>
         </Row>
       </Container>

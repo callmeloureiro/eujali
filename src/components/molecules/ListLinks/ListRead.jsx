@@ -2,6 +2,10 @@ import React from 'react'
 
 import style from './ListRead.sass'
 
+import moment from 'moment'
+
+moment.locale('pt-BR')
+
 class ListRead extends React.Component {
   constructor (props) {
     super(props)
@@ -54,10 +58,16 @@ class ListRead extends React.Component {
           { links.length > 0 &&
             links.map((elm, index) =>
               <li key={index}>
-                <button type='button' onClick={() => this.deleteLink(elm.uuid)}>
-                  <i className='fa fa-close'>{''}</i>
+                <button
+                  type='button'
+                  onClick={() => this.deleteLink(elm.uuid)}
+                >
+                  <span className={style.circle}>{''}</span>
                 </button>
-                <a href={'//' + elm.link} target='_blank'>{elm.link}</a>
+                <div className={style.listReadContent}>
+                  <a href={'//' + elm.link} target='_blank'>{elm.link}</a>
+                  <small>{moment(elm.dateCreated).calendar()}</small>
+                </div>
               </li>
             )
           }

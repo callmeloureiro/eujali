@@ -11,7 +11,7 @@ const Header = () => (
     <Container className={style.headerBorder}>
       <Row center>
         <Column>
-          <h1>Eu já li...</h1>
+          <h1>eu já li</h1>
         </Column>
       </Row>
     </Container>

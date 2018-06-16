@@ -11,7 +11,7 @@ const Footer = () => (
     <Container className={style.footerBorder}>
       <Row center>
         <Column>
-          <h2>Footer works!</h2>
+          <small>Developed with ♥ by Matheus Loureiro. Licensed under the MIT License.</small>
         </Column>
       </Row>
     </Container>

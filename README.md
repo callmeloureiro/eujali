@@ -1,3 +1,5 @@
 ## Eu já li
 
-TODO: Adicionar fontAwesome como dependência do webpack
+A simple todo list for links
+
+[Run Online](http://eujali.surge.sh/)

@@ -9,6 +9,7 @@ A simple todo list for links
 ```sh
   $ git clone https://github.com/mathloureiro/eujali.git
   $ cd eujali
+  $ npm i
   $ npm start
 ```
 

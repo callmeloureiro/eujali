@@ -16,28 +16,28 @@ class ListRead extends React.Component {
     }
   }
 
-  componentWillReceiveProps = (props) => {
-    if (props.dataLinks !== this.state.links) {
+  componentDidUpdate = () => {
+    if (this.props.dataLinks !== this.state.links) {
       this.setState({
-        links: props.dataLinks
+        links: this.props.dataLinks
       })
 
       this.props.updateLinks({
         action: 'update',
-        links: props.dataLinks
+        links: this.props.dataLinks
       })
     }
   }
 
-  deleteLink = (uuid) => {
-    const confirm = window.confirm('Você tem certeza disso?')
-
-    if (confirm) {
-      this.props.updateLinks({
-        action: 'delete',
-        uuid: uuid
-      })
-    }
+  setRead = (uuid) => {
+    this.props.updateLinks({
+      action: 'update',
+      uuid: uuid,
+      fields: {
+        category: 'read',
+        dateUpdated: +new Date()
+      }
+    })
   }
 
   getLinksFormated = (obj) => {
@@ -64,7 +64,7 @@ class ListRead extends React.Component {
               <li key={index}>
                 <button
                   type='button'
-                  onClick={() => this.deleteLink(elm.uuid)}
+                  onClick={() => this.setRead(elm.uuid)}
                 >
                   <span className={style.circle}>{''}</span>
                 </button>

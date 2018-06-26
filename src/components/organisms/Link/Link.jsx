@@ -28,7 +28,9 @@ class Link extends React.Component {
       links: [...prevState.links, {
         link: value,
         uuid: this.generateGUID(),
-        dateCreated: +new Date()
+        category: 'unread',
+        dateCreated: +new Date(),
+        dateUpdated: null
       }]
     }))
   }
@@ -45,9 +47,24 @@ class Link extends React.Component {
       }
     }
 
-    if (arg.action === 'update' && arg.links) {
-      arr = {
-        links: arg.links
+    if (arg.action === 'update') {
+      if (arg.links) {
+        arr = {
+          links: arg.links
+        }
+      }
+
+      if (arg.uuid) {
+        arr = {
+          links: this.state.links
+        }
+
+        const index = arr.links.findIndex(elm => elm.uuid === arg.uuid)
+
+        arr.links[index] = {
+          ...arr.links[index],
+          ...arg.fields
+        }
       }
     }
 

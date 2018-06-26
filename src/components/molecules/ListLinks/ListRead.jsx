@@ -30,10 +30,14 @@ class ListRead extends React.Component {
   }
 
   deleteLink = (uuid) => {
-    this.props.updateLinks({
-      action: 'delete',
-      uuid: uuid
-    })
+    const confirm = window.confirm('Você tem certeza disso?')
+
+    if (confirm) {
+      this.props.updateLinks({
+        action: 'delete',
+        uuid: uuid
+      })
+    }
   }
 
   getLinksFormated = (obj) => {

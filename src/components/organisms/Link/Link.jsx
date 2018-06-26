@@ -41,9 +41,8 @@ class Link extends React.Component {
     let arr
 
     if (arg.action === 'delete' && arg.uuid) {
-      arr = this.state.links
       arr = {
-        links: arr.filter(elm => elm.uuid !== arg.uuid)
+        links: this.state.links.filter(elm => elm.uuid !== arg.uuid)
       }
     }
 

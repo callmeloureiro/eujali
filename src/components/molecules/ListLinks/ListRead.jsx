@@ -46,6 +46,8 @@ class ListRead extends React.Component {
     const max = this.state.max
     const isReverse = this.state.reverse === true
 
+    obj = obj.filter(elm => elm.category === 'unread')
+
     if (max && obj.length > max) obj = [...obj].slice(-max)
 
     if (isReverse) obj = [...obj].reverse()

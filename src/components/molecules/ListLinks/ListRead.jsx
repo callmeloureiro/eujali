@@ -7,30 +7,29 @@ import moment from 'moment'
 moment.locale('pt-BR')
 
 class ListRead extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      links: [],
-      max: this.props.max,
-      reverse: this.props.reverse
-    }
+  state = {
+    links: [],
+    max: this.props.max || 5,
+    reverse: this.props.reverse || false
   }
 
-  componentDidUpdate = () => {
-    if (this.props.dataLinks !== this.state.links) {
-      this.setState({
-        links: this.props.dataLinks
-      })
+  static getDerivedStateFromProps (nextProps, prevState) {
+    const { dataLinks } = nextProps
+    const { links } = prevState
 
-      this.props.updateLinks({
-        action: 'update',
-        links: this.props.dataLinks
-      })
+    if (dataLinks !== links) {
+      return {
+        links: dataLinks
+      }
     }
+
+    return null
   }
 
-  setRead = (uuid) => {
-    this.props.updateLinks({
+  setRead = uuid => {
+    const { updateLinks } = this.props
+
+    updateLinks({
       action: 'update',
       uuid: uuid,
       fields: {
@@ -40,15 +39,16 @@ class ListRead extends React.Component {
     })
   }
 
-  getLinksFormated = (obj) => {
+  getLinksFormated = obj => {
     if (typeof obj !== 'object') return []
 
-    const max = this.state.max
-    const isReverse = this.state.reverse === true
+    const { max, isReverse } = this.state
 
     obj = obj.filter(elm => elm.category === 'unread')
 
-    if (max && obj.length > max) obj = isReverse ? obj.slice(-max) : obj.slice(0, max)
+    if (max && obj.length > max) {
+      obj = isReverse ? obj.slice(-max) : obj.slice(0, max)
+    }
 
     if (isReverse) obj = obj.reverse()
 
@@ -61,13 +61,10 @@ class ListRead extends React.Component {
     return (
       <div>
         <ul className={style.listRead}>
-          { links.length > 0 &&
-            links.map((elm, index) =>
+          {links.length > 0 &&
+            links.map((elm, index) => (
               <li key={index}>
-                <button
-                  type='button'
-                  onClick={() => this.setRead(elm.uuid)}
-                >
+                <button type='button' onClick={() => this.setRead(elm.uuid)}>
                   <span className={style.circle}>{''}</span>
                 </button>
                 <div className={style.listReadContent}>
@@ -75,12 +72,9 @@ class ListRead extends React.Component {
                   <small>{moment(elm.dateCreated).calendar()}</small>
                 </div>
               </li>
-            )
-          }
+            ))}
 
-          { links.length === 0 &&
-            <li>Sem nenhum registro</li>
-          }
+          {links.length === 0 && <li>Sem nenhum registro</li>}
         </ul>
       </div>
     )

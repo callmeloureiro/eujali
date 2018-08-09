@@ -12,26 +12,28 @@ import style from './Link.sass'
 import { getKeyValue, setKeyValue } from '../../../helpers/localStorage'
 
 class Link extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      links: []
-    }
+  state = {
+    links: []
   }
 
   componentDidMount = () => this.setState(getKeyValue('LINKS') || this.state)
 
-  generateGUID = () => Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+  generateGUID = () =>
+    Math.random().toString(36).substring(2, 15) +
+    Math.random().toString(36).substring(2, 15)
 
-  setLink = (value) => {
+  setLink = value => {
     this.setState(prevState => ({
-      links: [...prevState.links, {
-        link: value,
-        uuid: this.generateGUID(),
-        category: 'unread',
-        dateCreated: +new Date(),
-        dateUpdated: null
-      }]
+      links: [
+        ...prevState.links,
+        {
+          link: value,
+          uuid: this.generateGUID(),
+          category: 'unread',
+          dateCreated: +new Date(),
+          dateUpdated: null
+        }
+      ]
     }))
   }
 

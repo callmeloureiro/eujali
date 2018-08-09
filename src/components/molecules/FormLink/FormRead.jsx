@@ -3,28 +3,24 @@ import React from 'react'
 import style from './FormRead.sass'
 
 class FormRead extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      link: ''
-    }
+  state = {
+    link: ''
   }
 
-  handlerChange = (e) => {
-    this.setState({
-      link: e.target.value
-    })
-  }
+  handlerChange = e => this.setState({ [e.target.name]: e.target.value })
 
-  formatLink = (link) => link.replace(/(^\w+:|^)\/\//, '')
+  formatLink = link => link.replace(/(^\w+:|^)\/\//, '')
 
-  setReads = (e) => {
+  setReads = e => {
     e.preventDefault()
 
     if (this.state.link) {
-      const link = this.formatLink(this.state.link)
+      const { addLink } = this.props
+      let { link } = this.state
 
-      this.props.addLink(link)
+      link = this.formatLink(link)
+
+      addLink(link)
 
       this.setState({
         link: ''
@@ -32,23 +28,22 @@ class FormRead extends React.Component {
     }
   }
 
-  render = () => {
-    return (
-      <div className={style.formRead}>
-        <form onSubmit={this.setReads}>
-          <input
-            type='text'
-            placeholder='cole aqui'
-            onChange={this.handlerChange}
-            value={this.state.link}
-          />
-          <button type='submit' disabled={!this.state.link}>
-            <span>adicionar</span>
-          </button>
-        </form>
-      </div>
-    )
-  }
+  render = () => (
+    <div className={style.formRead}>
+      <form onSubmit={this.setReads}>
+        <input
+          type='text'
+          placeholder='cole aqui'
+          onChange={this.handlerChange}
+          value={this.state.link}
+          name='link'
+        />
+        <button type='submit' disabled={!this.state.link}>
+          <span>adicionar</span>
+        </button>
+      </form>
+    </div>
+  )
 }
 
 export default FormRead
